@@ -19,13 +19,15 @@ with columna2:
         grouped_df = filtered_df.groupby('year')['hours_game'].sum()
         max_hours_year = grouped_df.idxmax()
         # Construye el response_data
-        response_data = {"Año de lanzamiento con más horas jugadas para {}: {}".format(genero, max_hours_year)}
+        response_data = "Año de lanzamiento con más horas jugadas para {}: {}".format(genero, max_hours_year)
         # Muestra el resultado
         #st.write(response_data)
 with columna3:
     try:
         if response_data is not None:
-            st.write(response_data)
+            #st.write(response_data)
+            formatted_text = "<h3>{}</h3>".format(response_data)
+            st.markdown(formatted_text, unsafe_allow_html=True)
     except NameError:
         
         st.write("Aguardando Seleccion.")
