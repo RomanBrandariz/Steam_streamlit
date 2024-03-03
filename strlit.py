@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+import json
+
 
 # Insertar la imagen con el ancho calculado en píxeles
 st.image("logo.jpg")
@@ -148,24 +150,15 @@ with columna2:
             # Filtrar por la empresa desarrolladora
         result_df = df5[df5['developer'] == empresa_desarrolladora]
             # Convertir a formato de diccionario
-        response_data = result_df.set_index('developer').to_dict(orient='index')
-        st.write(response_data)
+        response_data5 = result_df.set_index('developer').to_dict(orient='index')
+        #st.write(response_data5)
 with columna3:
     try:
-        if response_data is not None:
-            st.write(response_data)
-            # Convertir el diccionario en una cadena JSON
-            response_data_json = json.dumps(response_data, indent=4)
-            # Crear la cadena HTML con la cadena JSON formateada
-            formatted_text = f"<pre>{response_data_json}</pre>"
-            # Mostrar la cadena HTML en Streamlit usando Markdown
-            st.markdown(formatted_text, unsafe_allow_html=True)
-          
-
+        st.write(response_data5)
     except NameError:
         st.write("Aguardando Seleccion.")
 
-columna1, columna2 = st.columns(2)
+columna1, columna2, columna3  = st.columns(3)
 with columna1:
     ''' ### ML
     ### Recomendación item-item
@@ -177,5 +170,10 @@ with columna2:
         item_id = st.selectbox('Item Id:', valores_unicos6)
         # Filtrar el DataFrame por el año especificado
         result_df = df6[df6['item_id'] == item_id]
-        response_data = result_df['Recomendaciones']
-        st.write(response_data)
+        response_data6 = result_df['Recomendaciones']
+        #st.write(response_data6)
+with columna3:
+    try:
+        st.write(response_data6)
+    except NameError:
+        st.write("Aguardando Seleccion.")
