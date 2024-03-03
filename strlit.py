@@ -1,11 +1,14 @@
 import streamlit as st
 import pandas as pd
+import matplotlib.pyplot as plt
 
+# Insertar la imagen con el ancho calculado en píxeles
+st.image("logo.jpg")
 
 columna1, columna2, columna3  = st.columns(3)
 with columna1:
     '''### Endpoint 1'''
-    st.write('Debe devolver el usuario que acumula más horas jugadas para el género dado y una lista de la acumulación de horas jugadas por año')
+    st.write('Devuelve año con mas horas jugadas para un género dado')
 with columna2:
     if st.checkbox('EndPoint1', value=False):
         
@@ -32,19 +35,18 @@ with columna3:
         
         st.write("Aguardando Seleccion.")
 
-columna1, columna2 = st.columns(2)
+
+columna1, columna2, columna3  = st.columns(3)
 with columna1:
-    '''### Endpoint 2
-    Devuelve el top 3 de juegos MÁS recomendados por usuarios para el año dado. (reviews.recommend = True y comentarios positivos/neutrales)
-    '''
+    '''### Endpoint 2 '''
+    st.write('Devuelve el usuario que acumula más horas jugadas para el género dado y una lista de la acumulación de horas jugadas por año.')
 with columna2:
     if st.checkbox('EndPoint2', value=False):
         consulta2 = pd.read_csv('UserForGenre.csv')
         # Filtrar el DataFrame por el género dado
         valores_unicos2 = consulta2['genres'].unique()
-        genero2 = st.selectbox('Selecciona un género:', valores_unicos,)
+        genero2 = st.selectbox('Selecciona un género:', valores_unicos2,)
         genre_data2 = consulta2[consulta2['genres'] == genero2]
-
         # Encontrar al usuario con más horas jugadas para ese género
         top_user = genre_data2.loc[genre_data2['hours_game'].idxmax()]['user_id']
         # Crear una lista de acumulación de horas jugadas por año
@@ -55,15 +57,25 @@ with columna2:
         mensaje_usuario = "Usuario con más horas jugadas para Género {}: {}".format(genero2, top_user)
         mensaje_horas = "Horas jugadas por año:"
         # Mostrar el resultado en la interfaz de Streamlit
-        st.write(mensaje_usuario)
-        st.write(mensaje_horas)
-        st.write(pd.DataFrame(hours_list))
+        #st.write(mensaje_usuario)
+        #st.write(mensaje_horas)
+        #st.write(pd.DataFrame(hours_list))
+with columna3:
+    try:
+        if mensaje_usuario is not None:
+            st.write(mensaje_usuario)
+            st.write(mensaje_horas)
+            st.write(pd.DataFrame(hours_list))
+    except NameError:
         
-columna1, columna2 = st.columns(2)
+        st.write("Aguardando Seleccion.")
+        
+        
+columna1, columna2, columna3  = st.columns(3)
 with columna1:
-    '''### Endpoint 3
-    Devuelve el top 3 de desarrolladoras con juegos MENOS recomendados por usuarios para el año dado. (reviews.recommend = False y comentarios negativos)
-    '''
+    '''### Endpoint 3'''
+    st.write('Devuelve el top 3 de juegos MÁS recomendados por usuarios para el año dado.')
+    
     # **def UsersRecommend( año : int )**: Devuelve el top 3 de juegos MÁS recomendados por usuarios para el año dado. (reviews.recommend = True y comentarios positivos/neutrales)
     # Ejemplo de retorno: [{"Puesto 1" : X}, {"Puesto 2" : Y},{"Puesto 3" : Z}]
     # Input: **UsersRecommend.csv**
@@ -74,12 +86,26 @@ with columna2:
         # Filtrar el DataFrame por el año especificado
         year = st.selectbox('Selecciona un año:', valores_unicos3)
         result_df = df3[df3['year'] == year]
-        response_data = [{"Puesto 1": result_df.iloc[0]['name']},
+        response_data3 = [{"Puesto 1": result_df.iloc[0]['name']},
                         {"Puesto 2": result_df.iloc[1]['name']},
                         {"Puesto 3": result_df.iloc[2]['name']}]
-        st.write(response_data)
+        #st.write(response_data)
+        
+with columna3:
+    try:
+        if response_data3 is not None:
+            st.title("Top 3 Puestos")
+            st.subheader(f"1. {response_data3[0]['Puesto 1']}")
+            st.write(f"2. {response_data3[1]['Puesto 2']}")
+            st.write(f"3. {response_data3[2]['Puesto 3']}")
+            #st.write(response_data)
+            #formatted_text = "<h3>{}</h3>".format(response_data)
+            #st.markdown(formatted_text, unsafe_allow_html=True)
+    except NameError:
+        
+        st.write("Aguardando Seleccion.")
 
-columna1, columna2 = st.columns(2)
+columna1, columna2, columna3  = st.columns(3)
 with columna1:
     ''' ### Endpoint 4 
     Devuelve el top 3 de desarrolladoras con juegos MENOS recomendados por usuarios para el año dado.'''
@@ -90,13 +116,23 @@ with columna2:
         valores_unicos3 = df4['year'].unique()
         year = st.selectbox('Selecciona un año:', valores_unicos3)
         result_df = df4[df4['year'] == year]
-        response_data = [{"Puesto 1": result_df.iloc[0]['developer']},
+        response_data4 = [{"Puesto 1": result_df.iloc[0]['developer']},
                             {"Puesto 2": result_df.iloc[1]['developer']},
                             {"Puesto 3": result_df.iloc[2]['developer']}]
             
-        st.write(response_data)
+        #st.write(response_data)
+with columna3:
+    try:
+        if response_data4 is not None:
+            st.title("Top 3 Puestos Menos Recomendados")
+            st.subheader(f"1. {response_data4[0]['Puesto 1']}")
+            st.write(f"2. {response_data4[1]['Puesto 2']}")
+            st.write(f"3. {response_data4[2]['Puesto 3']}")
+    except NameError:
+        st.write("Aguardando Seleccion.")
 
-columna1, columna2 = st.columns(2)
+columna1, columna2, columna3  = st.columns(3)
+
 with columna1:
     
     ''' ### Endpoint 5
@@ -114,6 +150,20 @@ with columna2:
             # Convertir a formato de diccionario
         response_data = result_df.set_index('developer').to_dict(orient='index')
         st.write(response_data)
+with columna3:
+    try:
+        if response_data is not None:
+            st.write(response_data)
+            # Convertir el diccionario en una cadena JSON
+            response_data_json = json.dumps(response_data, indent=4)
+            # Crear la cadena HTML con la cadena JSON formateada
+            formatted_text = f"<pre>{response_data_json}</pre>"
+            # Mostrar la cadena HTML en Streamlit usando Markdown
+            st.markdown(formatted_text, unsafe_allow_html=True)
+          
+
+    except NameError:
+        st.write("Aguardando Seleccion.")
 
 columna1, columna2 = st.columns(2)
 with columna1:
