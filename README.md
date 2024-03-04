@@ -1,13 +1,13 @@
-![Steam](https://github.com/RomanBrandariz/PI_STEAM/raw/main/assets/steam.png)
+![Steam](logo.jpg)
 <br />
-# Proyecto Individual: Sistema de Recomendación de Videojuegos para Usuarios de Steam
+# Proyecto Individual: Sistema de Recomendación de Videojuegos para Usuarios de Steam usando libreria Streamlit para el Deploy
 
 ### Descripción del problema (Contexto y rol a desarrollar)
 Tienes tu modelo de recomendación dando unas buenas métricas 😏, y ahora, cómo lo llevas al mundo real? 👀
 El ciclo de vida de un proyecto de Machine Learning debe contemplar desde el tratamiento y recolección de los datos (Data Engineer stuff) hasta el entrenamiento y mantenimiento del modelo de ML según llegan nuevos datos.
 
 ### Objetivo
-El propósito central es la creación del primer modelo de Machine Learning (end to end) que resuelva un problema de negocio en Steam, a través de un enfoque que involucra tareas de Data Engineering (ETL, EDA, API) hasta la implementación del ML. Se busca lograr un rápido desarrollo y tener un Producto Mínimo Viable (MVP).<br />
+El propósito central es la creación del  modelo de Machine Learning (end to end) que resuelva un problema de negocio en Steam, a través de un enfoque que involucra tareas de Data Engineering (ETL, EDA, API) hasta la implementación del ML. Se busca lograr un rápido desarrollo y tener un Producto Mínimo Viable (MVP).<br />
 <br />
 
 ## Etapas del Proyecto <br />
@@ -39,10 +39,8 @@ Creé el sistema de recomendación con uno de los enfoques propuestos:
 Se utilizó la métrica de **similitud del coseno**, ya que mide el coseno del ángulo entre dos vectores. Cuanto más cercano a 1, más similares son los vectores. Este método fue clave para determinar qué tan parecidos son los juegos entre sí. Esto se utiliza para generar recomendaciones, ya que los juegos con vectores similares son considerados como recomendaciones potenciales.<br />
 
 **4. Implementación de MLOps** <br />
-**Deploy del Modelo:** Desplegué el modelo de recomendación como parte de la API, la cual puedes consultar acá: **[URL de la API](https://pi-steam-lksp.onrender.com/docs)**. <br />
+**Deploy del Modelo:** Desplegué el modelo de recomendación como parte de la API, la cual puedes consultar acá: **[URL de la API](https://steamreload.streamlit.app/)**. <br />
 
-**5. Video Explicativo** <br />
-Grabé un video explicativo que muestra el funcionamiento de la API, consultas realizadas y una breve explicación de los modelos de ML utilizados [Google Drive - Video](link_video)<br />
 
 ## Autor <br />
 #### Roman Brandariz. <br />
