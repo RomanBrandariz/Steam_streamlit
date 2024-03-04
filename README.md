@@ -1,6 +1,6 @@
 ![Steam](logo.jpg)
 <br />
-# Proyecto Individual: Sistema de Recomendación de Videojuegos para Usuarios de Steam usando libreria Streamlit para el Deploy
+# Proyecto Individual: Sistema de Recomendación de Videojuegos para Usuarios de Steam usando libreria Streamlit para el Deploy para que la interfaz sea mas amigable con el usuarios
 
 ### Descripción del problema (Contexto y rol a desarrollar)
 Tienes tu modelo de recomendación dando unas buenas métricas 😏, y ahora, cómo lo llevas al mundo real? 👀
