@@ -45,3 +45,6 @@ Se utilizó la métrica de **similitud del coseno**, ya que mide el coseno del �
 ## Autor <br />
 #### Roman Brandariz. <br />
 Para cualquier duda/sugerencia/recomendación/mejora respecto al proyecto con toda libertad puedes contactarme por [LinkedIn](https://www.linkedin.com/in/romanbrandariz/)<br />
+[![LinkedIn](https://img.shields.io/badge/-LinkedIn-blue?style=flat-square&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/romanbrandariz/) [![GitHub](https://img.shields.io/badge/-GitHub-black?style=flat-square&logo=GitHub)](https://github.com/RomanBrandariz)
+
+
